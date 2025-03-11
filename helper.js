@@ -1,15 +1,22 @@
-export function mergeSort(array) {
+import { renderOption } from './render.js';
+
+let leftBtn = document.querySelector(".left button");
+let rightBtn = document.querySelector(".right button");
+let choice = 0;
+
+export async function mergeSort(array) {
     if (array.length === 1) return array;
     let left = array;
     let right = left.splice(Math.ceil(array.length / 2), Math.floor(array.length / 2));
     let length = left.length + right.length;    
 
-    left = mergeSort(left);
-    right = mergeSort(right);
+    left = await mergeSort(left);
+    right = await mergeSort(right);
 
     let output = [];
     for (let i = 0; i < length - 1; i++) {
-        if (choose(left[0], right[0])) {
+        let outcome = await choose(left[0], right[0]);
+        if (outcome) {
             output.push(left.shift());
             if (left.length === 0) {
                 output = output.concat(right);
@@ -37,6 +44,25 @@ export function shuffle(array) {
 }
 
 function choose(left, right) {
-    let preference = prompt(`Which do you prefer - 1:${left.song} or 2:${right.song}`);
-    return (preference == 1) ? true : false;
+    return new Promise(resolve => {
+        renderOption(left, 1);
+        renderOption(right, 2);
+
+        leftBtn.disabled = false;
+        rightBtn.disabled = false;
+
+        leftBtn.onclick = () => {
+            choice = 1;
+            leftBtn.disabled = true;
+            rightBtn.disabled = true;
+            resolve(true);
+        };
+
+        rightBtn.onclick = () => {
+            choice = 2;
+            leftBtn.disabled = true;
+            rightBtn.disabled = true;
+            resolve(false);
+        };
+    });
 }
