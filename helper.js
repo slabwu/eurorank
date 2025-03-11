@@ -1,12 +1,4 @@
-
-sortSongs();
-
-async function sortSongs() {
-    let songs = await getSongs();
-    console.log(songs);
-}
-
-function mergeSort(array) {
+export function mergeSort(array) {
     if (array.length === 1) return array;
     let left = array;
     let right = left.splice(Math.ceil(array.length / 2), Math.floor(array.length / 2));
@@ -33,7 +25,7 @@ function mergeSort(array) {
     }
 }
 
-function shuffle(array) {
+export function shuffle(array) {
     array.forEach ((item, index) => {
         let newIndex = Math.floor(Math.random() * array.length);
         let temp = array[newIndex];
@@ -45,16 +37,6 @@ function shuffle(array) {
 }
 
 function choose(left, right) {
-    let preference = prompt(`Which do you prefer - 1:${left} or 2:${right}`);
+    let preference = prompt(`Which do you prefer - 1:${left.song} or 2:${right.song}`);
     return (preference == 1) ? true : false;
-}
-
-async function getSongs() {
-    try {
-        const response = await fetch('https://eurovisionapi.runasp.net/api/contests/2024');
-        const json = await response.json();
-        return json.contestants;
-    } catch (err) {
-        console.log(err);
-    }
 }
