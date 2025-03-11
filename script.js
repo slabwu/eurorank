@@ -1,5 +1,6 @@
 
-console.log(mergeSort([1, 5, 6, 9, 8, 4]))
+console.log(mergeSort([1, 5, 6, 9, 8, 4]));
+console.log(shuffle([1, 5, 6, 9, 8, 4]));
 
 function mergeSort(array) {
     if (array.length === 1) return array;
@@ -26,4 +27,15 @@ function mergeSort(array) {
             }
         }
     }
+}
+
+function shuffle(array) {
+    array.forEach ((item, index) => {
+        let newIndex = Math.floor(Math.random() * array.length);
+        let temp = array[newIndex];
+        array[newIndex] = item;
+        array[index] = temp;
+    });
+
+    return array;
 }
