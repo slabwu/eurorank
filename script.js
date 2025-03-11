@@ -1,6 +1,10 @@
 
-console.log(mergeSort([1, 5, 6, 9, 8, 4]));
-console.log(shuffle([1, 5, 6, 9, 8, 4]));
+sortSongs();
+
+async function sortSongs() {
+    let songs = await getSongs();
+    console.log(songs);
+}
 
 function mergeSort(array) {
     if (array.length === 1) return array;
@@ -43,4 +47,14 @@ function shuffle(array) {
 function choose(left, right) {
     let preference = prompt(`Which do you prefer - 1:${left} or 2:${right}`);
     return (preference == 1) ? true : false;
+}
+
+async function getSongs() {
+    try {
+        const response = await fetch('https://eurovisionapi.runasp.net/api/contests/2024');
+        const json = await response.json();
+        return json.contestants;
+    } catch (err) {
+        console.log(err);
+    }
 }
