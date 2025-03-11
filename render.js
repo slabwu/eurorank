@@ -12,9 +12,9 @@ export function renderOption(song, option) {
         ref = right;
     }
     ref.innerHTML = '';
-    ref.innerHTML += `<h1>${song.song}</h1>`;
+    ref.innerHTML += `<h1>${countryName.of(`${song.country}`)} ${getFlagEmoji(`${song.country}`)}</h1>`;
+    ref.innerHTML += `<h2>${song.song}</h2>`;
     ref.innerHTML += `<h2>${song.artist}</h2>`;
-    ref.innerHTML += `<h2>${countryName.of(`${song.country}`)} ${getFlagEmoji(`${song.country}`)}</h2>`;
 }
 
 export function renderResult(ranking) {
