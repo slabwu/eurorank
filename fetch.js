@@ -1,6 +1,8 @@
 export async function getSongs() {
     try {
-        const response = await fetch('https://eurovisionapi.runasp.net/api/contests/2024');
+        let year = document.querySelector('select').value;
+        console.log(year);
+        const response = await fetch(`https://eurovisionapi.runasp.net/api/contests/${year}`);
         const json = await response.json();
         return json.contestants;
     } catch (err) {

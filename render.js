@@ -1,6 +1,10 @@
+import { sortSongs } from "./main.js";
+
+let submitBtn = document.querySelector(".submit");
 let left = document.querySelector(".left .details");
 let right = document.querySelector(".right .details");
 let result = document.querySelector(".result");
+let select = document.querySelector('select');
 const countryName = new Intl.DisplayNames(["en"], { type: "region" });
 
 
@@ -23,10 +27,23 @@ export function renderResult(ranking) {
     })
 }
 
+export function renderSelect() {
+    for (let i = 2010; i < 2025; i++) {
+        const year = document.createElement('option');
+        year.innerHTML = i;
+        select.appendChild(year);
+    }
+}
+
 function getFlagEmoji(countryCode) {
     const codePoints = countryCode
       .toUpperCase()
       .split('')
       .map(char =>  127397 + char.charCodeAt());
     return String.fromCodePoint(...codePoints);
-  }
+}
+
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    sortSongs();
+});
