@@ -15,8 +15,8 @@ body {
 
 .song {
     background-color: rgb(181, 181, 230);
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     padding: 10px;
     display: flex;
     flex-direction: column;

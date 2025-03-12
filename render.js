@@ -20,6 +20,8 @@ export function renderOption(song, option) {
     ref.innerHTML += `<h1>${countryName.of(`${song.country}`)} ${getFlagEmoji(`${song.country}`)}</h1>`;
     ref.innerHTML += `<h2>${song.song}</h2>`;
     ref.innerHTML += `<h2>${song.artist}</h2>`;
+    ref.innerHTML += `<a href='${song.url}'>Link</a>`;
+    //ref.innerHTML += `<iframe title='YouTube video player' type=\"text/html\" width='250' height='150' src='${song.url}' frameborder='0'></iframe>`;
 }
 
 export function renderResult(ranking) {

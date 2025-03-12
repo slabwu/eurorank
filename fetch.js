@@ -1,11 +1,21 @@
 export async function getSongs() {
     try {
         let year = document.querySelector('select').value;
-        console.log(year);
         const response = await fetch(`https://eurovisionapi.runasp.net/api/contests/${year}`);
         const json = await response.json();
-        return json.contestants;
+        console.log(json);
+        let requests = json.contestants.map(getVideo);
+        let songs = await Promise.all(requests);
+        console.log(songs);
+        return songs;
     } catch (err) {
         console.log(err);
     }
+}
+
+async function getVideo(song) {
+    let response = await fetch(`${song.url}`);
+    const info = await response.json();
+    song.url = info.videoUrls[0];
+    return song;
 }
