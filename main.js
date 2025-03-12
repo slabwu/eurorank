@@ -1,6 +1,6 @@
 import { getSongs } from './fetch.js';
 import { mergeSort, shuffle } from './helper.js';
-import { renderResult, renderSelect } from './render.js';
+import { renderResult, renderSelect, renderCode } from './render.js';
 
 renderSelect()
 
@@ -11,4 +11,5 @@ export async function sortSongs() {
     
     let ranking = await mergeSort(songs);
     renderResult(ranking);
+    renderCode(ranking);
 }

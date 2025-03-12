@@ -5,6 +5,7 @@ let left = document.querySelector(".left .details");
 let right = document.querySelector(".right .details");
 let result = document.querySelector(".result");
 let select = document.querySelector('select');
+let code = document.querySelector('.code');
 const countryName = new Intl.DisplayNames(["en"], { type: "region" });
 
 
@@ -33,6 +34,14 @@ export function renderSelect() {
         year.innerHTML = i;
         select.appendChild(year);
     }
+}
+
+export function renderCode(ranking) {
+    let year = document.querySelector('select').value;
+    code.innerHTML = `!submit ${year} `;
+    ranking.forEach((song) => {
+        code.innerHTML += `${song.country.toLowerCase()} `;
+    })
 }
 
 function getFlagEmoji(countryCode) {
