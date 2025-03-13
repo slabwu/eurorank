@@ -9,11 +9,13 @@
 </head>
 <body>    
     <div class="content">
-        <form>
+        <form class="options">
             <select name="year" id="year">
             </select>
             <button type="submit" class="submit">Submit</button>
         </form>
+
+        <div class="load">Loading...</div>
 
         <div class="container">
             <div class="left">
@@ -35,8 +37,10 @@
             </div>
         </div>
     
-        <table class="result"></table>
-        <p class="code"></p>
+        <div class="results">
+            <table class="result"></table>
+            <p class="code"></p>
+        </div>
     </div>
 </body>
 </html>

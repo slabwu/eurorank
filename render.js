@@ -10,8 +10,13 @@ let select = document.querySelector('select');
 let code = document.querySelector('.code');
 const countryName = new Intl.DisplayNames(["en"], { type: "region" });
 
+let optionsPage = document.querySelector(".options");
+let loadPage = document.querySelector(".load");
+let cardPage = document.querySelector(".container");
+let resultsPage = document.querySelector(".results");
 
-export function renderOption(song, option) {
+
+export function showOptions(song, option) {
     let ref;
     if (option === 1) {
         ref = leftCard;
@@ -26,7 +31,7 @@ export function renderOption(song, option) {
     ref.innerHTML += `<iframe title='YouTube video player' type=\"text/html\" width='288' height='162' src='${song.url}' frameborder='0' allow="fullscreen"></iframe>`;
 }
 
-export function renderResult(ranking) {
+export function showResult(ranking) {
     ranking.forEach((song, index) => {
         
         let rank = addElement('tr', result);
@@ -38,7 +43,11 @@ export function renderResult(ranking) {
     })
 }
 
-export function renderSelect() {
+export function showSelect() {
+    optionsPage.style.display = 'flex';
+    loadPage.style.display = 'none';
+    cardPage.style.display = 'none';
+
     for (let i = 2024; i > 1955; i--) {
         const year = document.createElement('option');
         year.innerHTML = i;
@@ -46,7 +55,18 @@ export function renderSelect() {
     }
 }
 
-export function renderCode(ranking) {
+export function showLoad() {
+    optionsPage.style.display = 'none';
+    loadPage.style.display = 'flex';
+}
+
+export function showCards() {
+    loadPage.style.display = 'none';
+    cardPage.style.display = 'flex';
+}
+
+export function showCode(ranking) {
+    cardPage.style.display = 'none';
     let year = document.querySelector('select').value;
     code.innerHTML = `!submit ${year} `;
     ranking.forEach((song) => {

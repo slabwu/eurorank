@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +54,7 @@ h1, h2 {
 }
 
 .song h1 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 600;
     margin: 0px 0 10px;
 }

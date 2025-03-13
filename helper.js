@@ -1,4 +1,4 @@
-import { renderOption } from './render.js';
+import { showOptions } from './render.js';
 
 let leftBtn = document.querySelector(".left button");
 let rightBtn = document.querySelector(".right button");
@@ -45,8 +45,8 @@ export function shuffle(array) {
 
 function choose(left, right) {
     return new Promise(resolve => {
-        renderOption(left, 1);
-        renderOption(right, 2);
+        showOptions(left, 1);
+        showOptions(right, 2);
 
         leftBtn.disabled = false;
         rightBtn.disabled = false;
