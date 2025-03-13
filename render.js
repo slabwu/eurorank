@@ -19,7 +19,7 @@ export function renderOption(song, option) {
         ref = rightCard;
     }
     ref.innerHTML = '';
-    ref.innerHTML += `<h1>${countryName.of(`${song.country}`)} ${getFlagEmoji(`${song.country}`)}</h1>`;
+    ref.innerHTML += `<h1>${countryName.of(song.country)} ${getFlagEmoji(song.country)}</h1>`;
     ref.innerHTML += `<h2>${song.song}</h2>`;
     ref.innerHTML += `<h2>${song.artist}</h2>`;
     //ref.innerHTML += `<a href='${song.url}'>Link</a>`;
@@ -27,8 +27,14 @@ export function renderOption(song, option) {
 }
 
 export function renderResult(ranking) {
-    ranking.forEach((song) => {
-        result.innerHTML += `<li>${song.song} - ${song.artist} (${countryName.of(`${song.country}`)} ${getFlagEmoji(`${song.country}`)})</li>`;
+    ranking.forEach((song, index) => {
+        
+        let rank = addElement('tr', result);
+        addElement('td', rank, `${index + 1}`);
+        addElement('td', rank, `${getFlag(song.country)}`);
+        addElement('td', rank, `${countryName.of(song.country)}`);
+        addElement('td', rank, `${song.song} - ${song.artist}`);
+        //result.innerHTML += `<li>${song.song} - ${song.artist} (${countryName.of(`${song.country}`)} ${getFlagEmoji(`${song.country}`)})</li>`;
     })
 }
 
@@ -101,3 +107,13 @@ left.addEventListener('mouseleave', (e) => {renderReset(e, left)});
 right.addEventListener('mousemove', (e) => {renderTilt(e, right)});
 right.addEventListener('mouseleave', (e) => {renderReset(e, right)});
 
+function addElement(type, source, content = '') {
+    const element = document.createElement(`${type}`);
+    element.innerHTML = `${content}`;
+    source.appendChild(element);
+    return element;
+}
+
+function getFlag(code) {
+    return `<img src="https://kapowaz.github.io/square-flags/flags/${code.toLowerCase()}.svg" width="48">`;
+}
