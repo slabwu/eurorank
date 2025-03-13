@@ -39,7 +39,7 @@ export function renderResult(ranking) {
 }
 
 export function renderSelect() {
-    for (let i = 2024; i > 2009; i--) {
+    for (let i = 2024; i > 1955; i--) {
         const year = document.createElement('option');
         year.innerHTML = i;
         select.appendChild(year);
