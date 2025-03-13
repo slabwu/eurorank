@@ -1,8 +1,10 @@
 import { sortSongs } from "./main.js";
 
 let submitBtn = document.querySelector(".submit");
-let left = document.querySelector(".left .details");
-let right = document.querySelector(".right .details");
+let left = document.querySelector(".left div.song");
+let right = document.querySelector(".right > div.song");
+let leftCard = document.querySelector(".left div.song .details");
+let rightCard = document.querySelector(".right > div.song .details");
 let result = document.querySelector(".result");
 let select = document.querySelector('select');
 let code = document.querySelector('.code');
@@ -12,16 +14,16 @@ const countryName = new Intl.DisplayNames(["en"], { type: "region" });
 export function renderOption(song, option) {
     let ref;
     if (option === 1) {
-        ref = left;
+        ref = leftCard;
     } else {
-        ref = right;
+        ref = rightCard;
     }
     ref.innerHTML = '';
     ref.innerHTML += `<h1>${countryName.of(`${song.country}`)} ${getFlagEmoji(`${song.country}`)}</h1>`;
     ref.innerHTML += `<h2>${song.song}</h2>`;
     ref.innerHTML += `<h2>${song.artist}</h2>`;
-    ref.innerHTML += `<a href='${song.url}'>Link</a>`;
-    //ref.innerHTML += `<iframe title='YouTube video player' type=\"text/html\" width='250' height='150' src='${song.url}' frameborder='0'></iframe>`;
+    //ref.innerHTML += `<a href='${song.url}'>Link</a>`;
+    ref.innerHTML += `<iframe title='YouTube video player' type=\"text/html\" width='250' height='150' src='${song.url}' frameborder='0'></iframe>`;
 }
 
 export function renderResult(ranking) {
@@ -31,7 +33,7 @@ export function renderResult(ranking) {
 }
 
 export function renderSelect() {
-    for (let i = 2010; i < 2025; i++) {
+    for (let i = 2024; i > 2009; i--) {
         const year = document.createElement('option');
         year.innerHTML = i;
         select.appendChild(year);
@@ -58,3 +60,44 @@ submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     sortSongs();
 });
+
+function renderTilt(e, target) {
+    const pX = e.clientX;
+    const pY = e.clientY;
+
+    const rect = target.getBoundingClientRect();
+
+    const halfWidth = rect.width / 2;
+    const halfHeight = rect.height / 2;
+
+    const centerX = rect.left + halfWidth;
+    const centerY = rect.top + halfHeight;
+
+    const deltaX = pX - centerX;
+    const deltaY = pY - centerY;
+
+    const rx = deltaY / halfHeight;
+    const ry = deltaX / halfWidth;
+
+    const distanceToCenter = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+    const maxDistance = Math.max(halfWidth, halfHeight);
+    const degree = distanceToCenter * 10 / maxDistance;
+
+    target.style.transform = `perspective(400px) rotate3D(${-rx}, ${ry}, 0, ${degree}deg)`;
+    
+    const gloss = target.querySelector('.gloss');
+    gloss.style.transform = `translate(${-ry * 100}%, ${-rx * 100}%) scale(2.4)`;
+    gloss.style.opacity = (distanceToCenter * 0.6) / maxDistance;
+}
+
+function renderReset(e, target) {
+    e.target.style = null;
+    const gloss = target.querySelector('.gloss');
+    gloss.style.opacity = 0;
+}
+
+left.addEventListener('mousemove', (e) => {renderTilt(e, left)});
+left.addEventListener('mouseleave', (e) => {renderReset(e, left)});
+right.addEventListener('mousemove', (e) => {renderTilt(e, right)});
+right.addEventListener('mouseleave', (e) => {renderReset(e, right)});
+

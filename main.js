@@ -2,7 +2,7 @@ import { getSongs } from './fetch.js';
 import { mergeSort, shuffle } from './helper.js';
 import { renderResult, renderSelect, renderCode } from './render.js';
 
-renderSelect()
+renderSelect();
 
 export async function sortSongs() {
     let songs = await getSongs();
