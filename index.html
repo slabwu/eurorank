@@ -9,31 +9,41 @@
 </head>
 <body>    
     <div class="content">
-        <form class="options">
-            <select name="year" id="year">
-            </select>
-            <button type="submit" class="submit">Submit</button>
-        </form>
+        <div class="options">
+            <h1>Welcome to EuroRank!</h1>
+
+            <p>First, select a contest to rank:</p>
+            <form>
+                <select name="year" id="year">
+                </select>
+                <button type="submit" class="submit">Submit</button>
+            </form>
+        </div>
 
         <div class="load">Loading...</div>
 
         <div class="container">
-            <div class="left">
-                <div class="song">
-                    <div class="gloss">
+            <h1>Which song do you prefer?</h1>
+            <div class="choice">
+                <div class="left">
+                    <div class="song">
+                        <div class="gloss">
+                        </div>
+                        <div class="details"></div>
                     </div>
-                    <div class="details"></div>
+                    <button disabled>Select</button>
                 </div>
-                <button disabled>Select</button>
-            </div>
-
-            <div class="right">
-                <div class="song">
-                    <div class="gloss">
+    
+                <p>or</p>
+    
+                <div class="right">
+                    <div class="song">
+                        <div class="gloss">
+                        </div>
+                        <div class="details"></div>
                     </div>
-                    <div class="details"></div>
+                    <button disabled>Select</button>
                 </div>
-                <button disabled>Select</button>
             </div>
         </div>
     

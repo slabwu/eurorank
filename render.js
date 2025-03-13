@@ -5,6 +5,8 @@ let left = document.querySelector(".left div.song");
 let right = document.querySelector(".right > div.song");
 let leftCard = document.querySelector(".left div.song .details");
 let rightCard = document.querySelector(".right > div.song .details");
+let leftBtn = document.querySelector(".left button");
+let rightBtn = document.querySelector(".right button");
 let result = document.querySelector(".result");
 let select = document.querySelector('select');
 let code = document.querySelector('.code');
@@ -17,11 +19,13 @@ let resultsPage = document.querySelector(".results");
 
 
 export function showOptions(song, option) {
-    let ref;
+    let ref, btn;
     if (option === 1) {
         ref = leftCard;
+        btn = leftBtn;
     } else {
         ref = rightCard;
+        btn = rightBtn;
     }
     ref.innerHTML = '';
     ref.innerHTML += `<h1>${countryName.of(song.country)} ${getFlagEmoji(song.country)}</h1>`;
@@ -29,6 +33,7 @@ export function showOptions(song, option) {
     ref.innerHTML += `<h2>${song.artist}</h2>`;
     //ref.innerHTML += `<a href='${song.url}'>Link</a>`;
     ref.innerHTML += `<iframe title='YouTube video player' type=\"text/html\" width='288' height='162' src='${song.url}' frameborder='0' allow="fullscreen"></iframe>`;
+    btn.innerHTML = `Choose ${countryName.of(song.country)}`;
 }
 
 export function showResult(ranking) {
