@@ -27,8 +27,8 @@ body {
 
 .song {
     color: white;
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -47,21 +47,21 @@ body {
     background: linear-gradient(to bottom right, rgb(115, 78, 237), rgb(65, 22, 158));
 }
 
-.song h1, .song h2 {
+h1, h2 {
     text-align: center;
     margin-top: 0px;
 }
 
-h1 {
-    font-size: 25px;
+.song h1 {
+    font-size: 30px;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin: 0px 0 10px;
 }
 
-h2 {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 8px;
+.song h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 6px;
 }
 
 button {
@@ -88,8 +88,7 @@ button:hover {
 }
 
 button:disabled {
-    color: transparent;
-    background-color: transparent;
+    display: none;
     transform: scale(0.8);
 }
 
@@ -134,6 +133,8 @@ form {
     pointer-events: none;
 }
 
-.song div.details > iframe {
-    transform: none !important;
+iframe {
+    margin-top: 18px;
+    border-radius: 12px;
+    overflow: hidden;
 }
