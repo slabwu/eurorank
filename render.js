@@ -32,7 +32,7 @@ export function showOptions(song, option) {
     ref.innerHTML += `<h2>${song.song}</h2>`;
     ref.innerHTML += `<h2>${song.artist}</h2>`;
     //ref.innerHTML += `<a href='${song.url}'>Link</a>`;
-    ref.innerHTML += `<iframe title='YouTube video player' type=\"text/html\" width='288' height='162' src='${song.url}' frameborder='0' allow="fullscreen"></iframe>`;
+    ref.innerHTML += `<iframe title='YouTube video player' type=\"text/html\" width='336' height='189' src='${song.url}' frameborder='0' allow="fullscreen"></iframe>`;
     btn.innerHTML = `Choose ${countryName.of(song.country)}`;
 }
 
