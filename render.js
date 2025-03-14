@@ -37,6 +37,8 @@ export function showOptions(song, option) {
 }
 
 export function showResult(ranking) {
+    resultsPage.style.display = 'block';
+
     ranking.forEach((song, index) => {
         
         let rank = addElement('tr', result);
@@ -52,6 +54,7 @@ export function showSelect() {
     optionsPage.style.display = 'flex';
     loadPage.style.display = 'none';
     cardPage.style.display = 'none';
+    resultsPage.style.display = 'none';
 
     for (let i = 2024; i > 1955; i--) {
         const year = document.createElement('option');
