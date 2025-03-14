@@ -10,6 +10,7 @@ let rightBtn = document.querySelector(".right button");
 let result = document.querySelector(".result");
 let select = document.querySelector('select');
 let code = document.querySelector('.code');
+let againBtn = document.querySelector('.again');
 const countryName = new Intl.DisplayNames(["en"], { type: "region" });
 
 let optionsPage = document.querySelector(".options");
@@ -27,6 +28,7 @@ export function showOptions(song, option) {
         ref = rightCard;
         btn = rightBtn;
     }
+
     ref.innerHTML = '';
     ref.innerHTML += `<h1>${countryName.of(song.country)} ${getFlagEmoji(song.country)}</h1>`;
     ref.innerHTML += `<h2>${song.song}</h2>`;
@@ -38,6 +40,7 @@ export function showOptions(song, option) {
 
 export function showResult(ranking) {
     resultsPage.style.display = 'block';
+    result.innerHTML = '';
 
     ranking.forEach((song, index) => {
         
@@ -75,6 +78,8 @@ export function showCards() {
 
 export function showCode(ranking) {
     cardPage.style.display = 'none';
+    code.innerHTML = '';
+
     let year = document.querySelector('select').value;
     code.innerHTML = `!submit ${year} `;
     ranking.forEach((song) => {
@@ -145,3 +150,5 @@ function addElement(type, source, content = '') {
 function getFlag(code) {
     return `<img src="https://kapowaz.github.io/square-flags/flags/${code.toLowerCase()}.svg" width="48">`;
 }
+
+againBtn.addEventListener('click', showSelect)
