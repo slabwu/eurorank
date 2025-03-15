@@ -1,3 +1,5 @@
+export let listLength;
+
 export async function getSongs() {
     try {
         let year = document.querySelector('select').value;
@@ -5,6 +7,7 @@ export async function getSongs() {
         const json = await response.json();
         let requests = json.contestants.map(getVideo);
         let songs = await Promise.all(requests);
+        listLength = songs.length;
         return songs;
     } catch (err) {
         console.log(err);

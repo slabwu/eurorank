@@ -1,8 +1,10 @@
-import { showOptions } from './render.js';
+import { showOptions, renderProgress } from './render.js';
+import { listLength } from './fetch.js';
 
 let leftBtn = document.querySelector(".left button");
 let rightBtn = document.querySelector(".right button");
 let choice = 0;
+export const sharedState = { stepsDone: 0 };
 
 export async function mergeSort(array) {
     if (array.length === 1) return array;
@@ -16,6 +18,10 @@ export async function mergeSort(array) {
     let output = [];
     for (let i = 0; i < length - 1; i++) {
         let outcome = await choose(left[0], right[0]);
+        sharedState.stepsDone++;
+        let percent =  Math.round(sharedState.stepsDone * 100 / getSteps(listLength));
+        renderProgress(percent);
+        
         if (outcome) {
             output.push(left.shift());
             if (left.length === 0) {
@@ -65,4 +71,9 @@ function choose(left, right) {
             resolve(false);
         };
     });
+}
+
+function getSteps(length) {
+    let n = length;
+    return Math.ceil(n * Math.log2(n) - 2 ** Math.log2(n) + 2 - 0.2645 * n);
 }

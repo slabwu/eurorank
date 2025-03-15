@@ -1,3 +1,4 @@
+import { sharedState } from "./helper.js";
 import { sortSongs } from "./main.js";
 
 let submitBtn = document.querySelector(".submit");
@@ -7,6 +8,9 @@ let leftCard = document.querySelector(".left div.song .details");
 let rightCard = document.querySelector(".right > div.song .details");
 let leftBtn = document.querySelector(".left button");
 let rightBtn = document.querySelector(".right button");
+let progress = document.querySelector("#progress");
+let progressLabel = document.querySelector(".progress-label");
+
 let result = document.querySelector(".result");
 let select = document.querySelector('select');
 let code = document.querySelector('.code');
@@ -39,7 +43,7 @@ export function showOptions(song, option) {
 }
 
 export function showResult(ranking) {
-    resultsPage.style.display = 'block';
+    resultsPage.style.display = 'flex';
     result.innerHTML = '';
 
     ranking.forEach((song, index) => {
@@ -151,4 +155,18 @@ function getFlag(code) {
     return `<img src="https://kapowaz.github.io/square-flags/flags/${code.toLowerCase()}.svg" width="48">`;
 }
 
-againBtn.addEventListener('click', showSelect)
+againBtn.addEventListener('click', () => {
+    sharedState.stepsDone = 0;
+    showSelect();
+})
+
+export function renderProgress(percent) {
+    progress.value = percent;
+    progressLabel.innerHTML = `Progress: ${percent}%`;
+
+    if (percent > 80) {
+        progressLabel.innerHTML += ' - Almost done!';
+    } else if (percent >= 50) {
+        progressLabel.innerHTML += ' - Halfway there!';
+    }
+}

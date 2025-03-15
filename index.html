@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="main.js" defer></script>
-    <title>EuroRank</title>
+    <title>Yourvision</title>
 </head>
 <body>    
     <div class="content">
         <div class="options">
-            <h1>Welcome to EuroRank!</h1>
+            <h1>Yourvision</h1>
+            <h2>Find your douze points and more with this Eurovision Song Contest Ranker!</h2>
 
             <p>First, select a contest to rank:</p>
             <form>
@@ -20,7 +21,9 @@
             </form>
         </div>
 
-        <div class="load">Loading...</div>
+        <div class="load">
+            <div class="loader"></div>
+        </div>
 
         <div class="container">
             <h1>Which song do you prefer?</h1>
@@ -45,11 +48,14 @@
                     <button disabled>Select</button>
                 </div>
             </div>
+            <label for="progress" class="progress-label"></label>
+            <progress id="progress" value="0" max="100"></progress>
         </div>
     
         <div class="results">
             <h1>Your Results</h1>
             <table class="result"></table>
+            <h3>Discord code</h3>
             <p class="code"></p>
             <button class="again">Rank Again?</button>
         </div>

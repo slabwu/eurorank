@@ -240,15 +240,11 @@ td:nth-child(3) {
 }
 
 td:nth-child(3):hover {
-    transform: scale(1.06);
-}
-
-td:nth-child(4):hover {
-    transform: scale(1.1) translateX(60px);
+    transform: scale(1.04);
 }
 
 td:nth-child(4) {
-    background-color: var(--darkblue);
+    background-color: var(--blue);
     width: 200px;
     font-size: 18px;
     font-weight: 400;
@@ -256,7 +252,7 @@ td:nth-child(4) {
 }
 
 td:nth-child(4):hover {
-    transform: scale(1.1) translateX(30px);
+    transform: scale(1.05) translateX(30px);
 }
 
 .or {
@@ -269,8 +265,59 @@ td:nth-child(4):hover {
     justify-content: center;
     font-size: 20px;
     font-weight: 400;
+    margin-bottom: 110px;
 }
 
 .load, .results {
     display: none;
+}
+
+.code {
+    background-color: var(--darkblue);
+    padding: 16px 0 16px 20px;
+    margin: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.again {
+    width: 300px;
+}
+
+.results {
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    width: 200px;
+}
+
+.progress-label {
+    margin-bottom: -30px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.container > h1 {
+    margin-bottom: -20px;
+}
+
+progress {
+    width: 100%;
+    height: 24px;
+    -webkit-appearance: none;
+   appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: var(--darkblue);
+    border-radius: 12px;  
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--pink);
+    border-radius: 12px;  
 }
