@@ -446,6 +446,9 @@ img {
     z-index: 1;
 }
 
-footer {
-    background-color: #020142;
+.github img {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 32px;
 }
