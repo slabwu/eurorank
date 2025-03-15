@@ -218,6 +218,18 @@ td:first-child {
     font-weight: 600;
 }
 
+tr:first-child td:first-child {
+    background-color: #ffd900c1;
+}
+
+tr:nth-child(2) td:first-child {
+    background-color: #c0c0c0a5;
+}
+
+tr:nth-child(3) td:first-child {
+    background-color: #cd8032d2;
+}
+
 td:first-child:hover {
     transform: scale(1.2) translateX(-4px);
 }

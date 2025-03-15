@@ -1,2 +1,2 @@
-# eurorank
+# yourvision
 Building a song ranker
