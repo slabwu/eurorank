@@ -357,7 +357,19 @@ progress::-webkit-progress-value {
     gap: 10px;
 }
 
-.load p {
+.load p, .options p {
     font-size: 18px;
     font-weight: 400;
+}
+
+img {
+    width: 700px;
+}
+
+.options h2 {
+    margin: 40px 0 40px;
+    font-size: 24px;
+    font-weight: 600;
+    width: 500px;
+    line-height: 1.4em;
 }

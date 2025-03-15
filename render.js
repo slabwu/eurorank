@@ -162,11 +162,13 @@ againBtn.addEventListener('click', () => {
 
 export function renderProgress(percent) {
     progress.value = percent;
-    progressLabel.innerHTML = `Progress: ${percent}%`;
+    progressLabel.innerHTML = `${percent}% ranked`;
 
-    if (percent > 80) {
+    if (percent > 70) {
         progressLabel.innerHTML += ' - Almost done!';
     } else if (percent >= 50) {
         progressLabel.innerHTML += ' - Halfway there!';
+    } else if (percentage > 30) {
+        progressLabel.innerHTML += ' - Making good progress!';
     }
 }
