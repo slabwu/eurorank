@@ -13,14 +13,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background: linear-gradient(to bottom right, rgb(45, 15, 121), var(--navy));
+    background-attachment: scroll;
 }
 
 .content, .options {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.options, .load, .container {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
 .choice {
@@ -272,16 +280,9 @@ td:nth-child(4):hover {
     display: none;
 }
 
-.code {
-    background-color: var(--darkblue);
-    padding: 16px 0 16px 20px;
-    margin: 20px;
-    border-radius: 10px;
-    width: 100%;
-}
-
 .again {
     width: 300px;
+    margin: 50px 0 80px;
 }
 
 .results {
@@ -357,7 +358,7 @@ progress::-webkit-progress-value {
     gap: 10px;
 }
 
-.load p, .options p {
+.load p, .options p, .code {
     font-size: 18px;
     font-weight: 400;
 }
@@ -373,3 +374,27 @@ img {
     width: 500px;
     line-height: 1.4em;
 }
+
+.results h1 {
+    margin-top: 100px;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.results h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 60px 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+.code {
+    background-color: var(--darkblue);
+    padding: 16px 0 16px 20px;
+    margin: 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-wrap: wrap;
+}
+
