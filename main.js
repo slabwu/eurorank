@@ -8,7 +8,7 @@ export async function sortSongs() {
     showLoad();
     let songs = await getSongs();
     songs = shuffle(songs);
-    songs.length = 12;
+    //songs.length = 6;
     
     showCards();
     let ranking = await mergeSort(songs);
